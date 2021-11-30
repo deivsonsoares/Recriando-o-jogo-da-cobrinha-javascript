@@ -7,6 +7,7 @@ snake [0] = {
     x: 8 * box,
     y: 8 * box //APOS ISSO POSSIBILITA UTILIZAR O FOR NA FUNCAO  CRIAR COBRINHA
 }
+let direction = "right";
 //funcao de define o canvas , desenha e define cor
 function criarBG() {
     context.fillStyle = "lightgreen";//background
@@ -21,7 +22,26 @@ function criarCobrinha() {
     for (i=0; i < snake.length; i++){//FOR VAR PERCORRER TODO TAMANHO DO ARRAY, INCREMENTANDO
     context.fillStyle = "green";
     context.fillRect(snake[i].x, snake[i].y, box, box);
-    }
+    } 
 }
-criarBG();//chamando a funcao
-criarCobrinha();
+function iniciarJogo(){
+    
+    criarBG();//chamando a funcao
+    criarCobrinha();
+    let snakeX = snake[0] .x;//criar a posicao da cobrinha x,y, para setar os movimentos e ter um ponto de partida
+    let snakeY = snake[0] .y;
+    if (direction == "right") snakeX += box;//criando as coordenadas da cobrinha determinando o seu caminho, passando as condicionais 
+    if (direction == "left") snakeY += box;
+    if (direction == "up") snakeY += box;
+    if (direction == "down") snakeY += box;
+    
+    snake.pop();
+
+    let newHead = {
+        x: snakeX,
+        y: snakeY
+    }
+    snake.unshift(newHead);
+}
+
+let jogo = setInterval (iniciarJogo, 100);//passando intervalo de 100milisegundos, pra iniciar jogo renovar e dar continuidade sem travar 
