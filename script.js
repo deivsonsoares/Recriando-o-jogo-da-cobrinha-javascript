@@ -18,7 +18,7 @@ let food = {
 
 //funcao de define o canvas , desenha e define cor
 function criarBG() {
-    context.fillStyle = "lightgreen";//background
+    context.fillStyle = "white";//background
     context.fillRect(0, 0, 16 * box, 16 * box);//desenha o retangulo onde acontece o jogo
 }//quatro parametros x,y , altura, largura
 
@@ -28,7 +28,7 @@ function criarBG() {
 
 function criarCobrinha() { 
     for (i=0; i < snake.length; i++){//FOR VAR PERCORRER TODO TAMANHO DO ARRAY, INCREMENTANDO
-    context.fillStyle = "green";
+        context.fillStyle = "darkcyan";
     context.fillRect(snake[i].x, snake[i].y, box, box);
     } 
 }
