@@ -8,6 +8,13 @@ snake [0] = {
     y: 8 * box //APOS ISSO POSSIBILITA UTILIZAR O FOR NA FUNCAO  CRIAR COBRINHA
 }
 let direction = "right";
+//metodo que cria numeros aleatorios para reposicionar a comida da cobra
+let food = {
+    x: Math.floor(Math.random() * 15 + 1) * box,
+    y: Math.floor(Math.random() * 15 + 1) * box
+}
+
+
 //funcao de define o canvas , desenha e define cor
 function criarBG() {
     context.fillStyle = "lightgreen";//background
@@ -24,6 +31,12 @@ function criarCobrinha() {
     context.fillRect(snake[i].x, snake[i].y, box, box);
     } 
 }
+
+function drawFood() {
+    context.fillStyle = "red";
+    context.fillRect(food.x, food.y, box, box)
+}
+
 document.addEventListener("keydown", update);//evento de clique no teclado passando o codigo para variavel uptade
 
 function update (event) {
@@ -42,6 +55,7 @@ function iniciarJogo(){
     
     criarBG();//chamando a funcao
     criarCobrinha();
+    drawFood();
     let snakeX = snake[0].x;//criar a posicao da cobrinha x,y, para setar os movimentos e ter um ponto de partida
     let snakeY = snake[0].y;
 
