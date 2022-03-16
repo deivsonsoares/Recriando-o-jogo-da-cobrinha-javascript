@@ -24,7 +24,7 @@ function criarCobrinha() {
     context.fillRect(snake[i].x, snake[i].y, box, box);
     } 
 }
-document.addEventListener('Keydown', update);//evento de clique no teclado passando o codigo para variavel uptade
+document.addEventListener("keydown", update);//evento de clique no teclado passando o codigo para variavel uptade
 
 function update (event) {
     if(event.keyCode == 37 && direction != "right") direction = "left";   
@@ -35,11 +35,11 @@ function update (event) {
 
 
 function iniciarJogo(){
-    /*if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
+    if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
     if(snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
-    if(snake[0].y < 15 * box && direction == "down") snake[0].x = 0;
+    if(snake[0].y > 15 * box && direction == "down") snake[0].x = 0;
     if(snake[0].y < 0 && direction == "up") snake[0].y = 16 * box;
-    */
+    
     criarBG();//chamando a funcao
     criarCobrinha();
     let snakeX = snake[0].x;//criar a posicao da cobrinha x,y, para setar os movimentos e ter um ponto de partida
@@ -59,6 +59,7 @@ function iniciarJogo(){
     snake.unshift(newHead); //metodo acrescenta no primeiro elemento
 }
 
-let jogo = setInterval (iniciarJogo, 100);//passando intervalo de 100milisegundos, pra iniciar jogo renovar e dar continuidade sem travar 
+let jogo = setInterval (iniciarJogo,600);//passando intervalo de 100milisegundos, pra iniciar jogo renovar e dar continuidade sem travar 
 
-
+iniciarJogo();
+update();
